@@ -1,0 +1,62 @@
+create database better
+
+1.用户信息
+create table users
+(
+user_id int(10) not null primary key,
+user_password char(10)
+);
+
+insert into users values('2222','2222');
+insert into users values('2223','2223');
+insert into users values('2224','2224');
+insert into users values('2225','2225');
+insert into users values('2226','2226');
+
+2.管理员信息
+create table admin
+(
+admin_id int(10) not null primary key,
+admin_password char(10)
+);
+
+insert into admin values('5555','6666');
+
+3.销售员信息
+create table sp
+(
+sp_name char(10),
+sp_id int(4) unsigned not null primary key,
+sex char(2) ,
+age int unsigned ,
+sp_tel char(15),
+area char(8),
+zhibiao int(8),
+money int(8)
+);
+
+insert into sp values('廖文涛','2222','男','20','13838389438','广西','10000','2000');
+insert into sp values('李麟睿','2223','男','20','13546468454','北京','20000','3000');
+insert into sp values('王启明','2224','男','20','13465454641','东北','30000','4000');
+insert into sp values('朱滨','2225','男','20','13873546544','福建','40000','5000');
+insert into sp values('宋健','2226','男','20','13873155453','贵州','50000','6000');
+
+4.订单信息
+create table dingdan
+(
+dingdan_id int not null primary key,
+dingdan_date date,
+customer char(10),
+customer_tel char(15),
+product char(20),
+amount int,
+sp_name char(10),
+sp_id int(4) unsigned not null,
+state char(10)
+);
+
+insert into dingdan values('1678','2017-9-18','马云','18883545464','淘宝','1','廖文涛','2222','已售出已收款');
+insert into dingdan values('1679','2017-9-18','马化腾','18874835121','腾讯','1','李麟睿','2223','已售出已收款');
+insert into dingdan values('1680','2017-9-18','李彦宏','18887354638','百度','1','王启明','2224','已售出已收款');
+insert into dingdan values('1681','2017-9-18','比尔盖茨','18886784545','微软','1','朱滨','2225','已售出未收款');
+insert into dingdan values('1682','2017-9-18','扎克伯格','18897845343','facebook','1','宋健','2226','已售出未收款');

@@ -1,0 +1,26 @@
+package Face;
+
+import java.sql.*;
+
+public class Connect {
+	public static void main(String args[]) throws ClassNotFoundException, SQLException{
+		Connect con = new Connect();
+        }
+       public Connect() throws ClassNotFoundException, SQLException{
+        Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+    	System.out.println("驱动加载成功");
+    	String dbur1 = "jdbc:odbc:driver={Microsoft Access Driver (*.mdb)};DBQ=e://2018软件实习//database.mdb";
+    	Connection conn = DriverManager.getConnection("jdbc:odbc:Database","","");  
+        Statement stmt = conn.createStatement();  
+        //已连接上Database
+        //连接各表
+        ResultSet rs_admin = stmt.executeQuery("select * from admin注册表");  
+        ResultSet re_normal = stmt.executeQuery("select * from 人员注册表");
+            
+        while (rs_admin.next()) {  
+            System.out.println("ID:"+rs_admin.getString(1));
+            System.out.println("name:"+rs_admin.getString(3)+rs_admin.getString(4));  
+            System.out.println();
+        }
+	}
+}

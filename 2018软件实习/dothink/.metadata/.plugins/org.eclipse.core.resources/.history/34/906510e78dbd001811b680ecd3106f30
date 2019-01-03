@@ -1,0 +1,41 @@
+import java.sql.*;
+
+public class SqlOperation {
+	public static int result1 = 0;
+	public ResultSet result2 = null;
+	public Statement statement = null;
+	public Connection connection = null; 
+	//sql是数据库执行语句
+	//operation是指操作类型，0代表delete,insert,update
+	//1代表select
+	public void operation(String sql,int operation) throws SQLException, ClassNotFoundException {
+        String driver = "com.mysql.jdbc.Driver";
+        
+        String url = "jdbc:mysql://localhost:3306/mydb";
+
+        String user = "root"; //用户名root，一般都是这个
+        String password = "zxyzxy"; //自己数据库密码
+        Class.forName(driver); //这上面可以封装起来一个方法
+        System.out.println("Driver loaded");
+
+        connection = (Connection) DriverManager.getConnection(url, user, password);//连接数据库
+        System.out.println("Database connected");
+
+        statement = (Statement) connection.createStatement();
+        
+        System.out.println(sql);
+        
+        if(operation==0){
+            result1 = (int) statement.executeUpdate(sql);
+        }
+        else if(operation==1){
+            result2 = statement.executeQuery(sql);
+
+        }
+        
+//        statement.close();
+//        connection.close();
+    }
+
+
+}

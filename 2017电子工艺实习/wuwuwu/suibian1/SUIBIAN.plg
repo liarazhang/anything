@@ -1,0 +1,15 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+E:\2017电子工艺实习\SUIBIAN.uvproj
+Project File Date:  09/07/2017
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=10.0 xdata=0 code=99
+creating hex file from "SUIBIAN"...
+"SUIBIAN" - 0 Error(s), 0 Warning(s).

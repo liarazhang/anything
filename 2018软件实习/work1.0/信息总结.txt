@@ -1,0 +1,30 @@
+数据库 better
+
+1.用户信息 users
+账号 user_id
+密码 user_password
+
+2.管理员信息 admin
+账号 admin_id
+密码 admin_password
+
+3.销售员信息 sp
+姓名 sp_name
+员工编号 sp_id
+性别 sex
+年龄 age
+员工电话 sp_tel
+负责地区 area
+业绩指标 zhibiao
+销售额 money
+
+4.订单信息 dingdan
+订单号 dingdan_id
+订购日期 dingdan_date
+客户姓名 customer
+客户电话 customer_tel
+订购产品 product
+订购数量 amount
+销售员姓名 sp_name
+销售员编号 sp_id
+销售状态 state

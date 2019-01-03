@@ -1,0 +1,35 @@
+package Face;
+
+import java.sql.*;
+
+public class Test {  
+    /** 
+     * 初学者请注意： 
+     * 1:先建立一个access文件a1.mdb,并放在D:/下; 
+     * 2:在数据库文件a1.mdb中建立一个表Table1； 
+     * 3：为Table1添加一列，并插入至少一条记录； 
+     * 4：本文是一个完整的类，直接拿去运行就可以。 
+     */  
+
+public static void main(String args[])
+	{
+	try
+	{
+		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+		System.out.println("驱动加载成功");
+	}
+	catch(Exception e)
+	{
+		System.out.println("无法载入JDBC驱动程序");
+	}
+	try
+	{
+		Connection conn=DriverManager.getConnection("jdbc:odbc:myusername");
+		System.out.println("数据库连接成功");
+	}
+	catch(Exception e)
+	{
+		System.out.println("XXX");
+	}
+	}
+   }  

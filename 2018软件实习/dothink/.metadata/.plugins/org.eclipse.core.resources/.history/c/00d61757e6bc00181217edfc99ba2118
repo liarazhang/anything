@@ -1,0 +1,41 @@
+import java.awt.Dimension;
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+
+//panel3 销售情况
+public class pan3 extends JFrame{
+	public static JTable table= null;
+    private DefaultTableModel defaultTableModel;
+    private TableColumn column;
+	 public static JScrollPane scro2=null ;
+	public pan3() {
+		//读取销售情况
+		String[] n1 = { "", "", "", "", "", "", "" };
+        Object[][] p = { n1, n1, n1, n1, n1, n1, n1, n1 , n1, n1, n1, n1, n1, n1, n1, n1 ,n1, n1, n1, n1, n1, n1, n1, n1 ,n1, n1, n1, n1, n1, n1, n1, n1 };
+        String[] n = {"日期", "产品", "客户", "负责人", "销量","单位", "单价" };
+
+        defaultTableModel = new DefaultTableModel(p, n); // 用双数组创建DefaultTableModel对象
+        table = new JTable(defaultTableModel);// 创建表格组件
+        JTableHeader head = table.getTableHeader(); // 创建表格标题对象
+        head.setPreferredSize(new Dimension(head.getWidth(), 35));// 设置表头大小
+        head.setFont(new Font("楷体", Font.PLAIN, 18));// 设置表格字体
+        table.setRowHeight(18);// 设置表格行宽
+
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);// 以下设置表格列宽
+        for (int i = 0; i < 7; i++) {
+            column = table.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(50);
+            }
+
+	}
+         scro2 = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+}
+}

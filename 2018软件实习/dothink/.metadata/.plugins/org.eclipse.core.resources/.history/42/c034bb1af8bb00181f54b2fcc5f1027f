@@ -1,0 +1,36 @@
+package Face;
+
+import java.sql.*;
+
+public class Connect {
+	Connection conn = null;
+	PreparedStatement ps=null;
+	
+	public static void main(String args[]) throws ClassNotFoundException, SQLException {
+		Connect con = new Connect();
+        }
+	
+       
+	public Connect() throws ClassNotFoundException, SQLException{
+        Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+//    	System.out.println("驱动加载成功");
+    	conn = DriverManager.getConnection("jdbc:odbc:Database","","");  
+        Statement stmt = conn.createStatement();  
+        //已连接上Database
+        //连接各表
+        ResultSet rs_admin = stmt.executeQuery("select * from admin注册表");  
+        ResultSet rs_normal = stmt.executeQuery("select * from 人员注册表");
+        
+//        ps=conn.prepareStatement("update 人员注册表 set 密码='mm' where Id=1;");
+//        ps.executeUpdate();
+        
+        
+        while (rs_normal.next()) {  
+            System.out.println("ID:"+rs_normal.getString(1));
+            System.out.println("name:"+rs_normal.getString(3)+rs_normal.getString(4));  
+            System.out.println("password:"+rs_normal.getString(9));  
+
+            System.out.println();
+        }
+	}
+}

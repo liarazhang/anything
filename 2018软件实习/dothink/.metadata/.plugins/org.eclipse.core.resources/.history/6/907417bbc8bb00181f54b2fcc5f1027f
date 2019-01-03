@@ -1,0 +1,36 @@
+package Face;
+
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
+public class Test {
+	public static void main(String args[]) throws Exception {  
+		ConnectAccess ca=new ConnectAccess();    
+        ca.ConnectAccessFile(); 
+    }
+    public void ConnectAccessFile() throws Exception   
+    {  
+        Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");  
+        /** 
+         *直接连接access文件。 
+         */  
+        String dbur1 = "jdbc:odbc:driver={Microsoft Access Driver (*.mdb)};DBQ=E://2018软件实习//Database3.mdb";  
+        Connection conn = DriverManager.getConnection(dbur1, "admin", "密码");  
+        Statement stmt = conn.createStatement();  
+        ResultSet rs = stmt.executeQuery("select * from admin");  
+        System.out.println("连接access:");
+        while (rs.next()) {  
+        System.out.println("ID:"+rs.getString(1));
+            System.out.println("Pname:"+rs.getString(2));  
+            System.out.println("Psex:"+rs.getString(3)); 
+            System.out.println();
+        }  
+        rs.close();  
+        stmt.close();  
+        conn.close();  
+    }  
+}
