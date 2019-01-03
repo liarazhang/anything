@@ -1,0 +1,27 @@
+num=20;
+den=conv([1,0],[0.5,1]);
+G0=tf(num,den);
+[Gm,Pm,Wcg,Wcp]=margin(G0);
+w=0:0.1:10000;
+[mag,phase]=bode(G0,w);
+magdb=20*log(mag);
+phiml=35;
+deta=8;
+phim=phiml-Pm+deta;
+bita=(1-sin(phim*pi/180))/(1+sin(phim*pi/180));
+n=find(magdb+10*log10(1/bita)<=0.0001);
+wc=n(1);
+w1=(wc/10)*sqrt(bita);
+w2=(wc/10)/sqrt(bita);
+numc=[1/w1,1];
+denc=[1/w2,1];
+Gc=tf(numc,denc);
+G=Gc*G0;
+[Gmc,Pmc,Wcgc,Wcpc]=margin(G);
+GmcdB=20*log10(Gmc);
+disp('校正装置传递函数和校正后系统开环传递函数'),Gc,G,
+disp('校正后系统的频域性能指标'),[GmcdB,Pmc,Wcpc],
+disp('校正装置的参数T和a值:'),T=1/w1;
+[T,bita],
+bode(G0,G);
+hold on,margin(G)
