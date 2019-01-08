@@ -4,4 +4,4 @@ Gc=feedback(G,1);
 figure(1)
 nyquist(G)
 roots(Gc.den{1})
-step(Gc)
+%step(Gc)
